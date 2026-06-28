@@ -39,7 +39,7 @@ export default function Navbar() {
             <div className="bg-[#0a0402]" />
             <div className="bg-[#0a0402]" />
           </div>
-          <span className="text-2xl font-semibold tracking-tight ml-2 text-white">Fluxora</span>
+          <span className="text-2xl font-semibold tracking-tight ml-2 text-white">ReachMoreAdz</span>
         </Link>
 
         {/* Links */}

@@ -97,8 +97,8 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div>
                 <h4 className="text-[#ff5f1f] text-xs font-bold tracking-widest uppercase mb-2">Email Us</h4>
-                <a href="mailto:hello@hypeowlmedia.com" className="text-xl md:text-2xl font-medium hover:text-[#ff5f1f] transition-colors">
-                  hello@hypeowlmedia.com
+                <a href="mailto:hello@ReachMoreAdz.com" className="text-xl md:text-2xl font-medium hover:text-[#ff5f1f] transition-colors">
+                  hello@ReachMoreAdz.com
                 </a>
               </div>
               <div>

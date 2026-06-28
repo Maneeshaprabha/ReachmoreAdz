@@ -61,10 +61,10 @@ export default function Footer() {
             {/* Massive Email Link with Underline */}
             <div>
               <a 
-                href="mailto:info@netxium.com" 
+                href="mailto:info@ReachMoreAdz.com" 
                 className="text-4xl sm:text-5xl lg:text-[4rem] font-bold tracking-tighter inline-block border-b-[4px] border-white pb-2 hover:text-gray-300 hover:border-gray-300 transition-colors"
               >
-                info@netxium.com
+                info@ReachMoreAdz.com
               </a>
             </div>
           </motion.div>
@@ -99,7 +99,7 @@ export default function Footer() {
         <motion.div variants={itemVariants} className="w-full mt-20 mb-8">
           <hr className="border-white/10 mb-8" />
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs font-medium text-gray-400">
-            <p>© 2026 Netxium Studio. All Rights Reserved</p>
+            <p>© 2026 ReachMoreAdz Studio. All Rights Reserved</p>
             <div className="flex gap-8">
               <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
               <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>

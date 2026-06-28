@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const faqs = [
   {
     id: 1,
-    question: "What is the core Netxium Design methodology?",
+    question: "What is the core ReachMoreAdz Design methodology?",
     answer: "We prioritize clean architecture and fluid user experiences. By bridging modern UI components with robust front-end frameworks, we ensure every digital touchpoint is both aesthetically striking and highly performant."
   },
   {
