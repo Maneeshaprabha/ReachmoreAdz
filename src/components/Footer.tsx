@@ -77,8 +77,8 @@ export default function Footer() {
               <span className="text-gray-500 text-xs font-medium mb-2">Navigation</span>
               <Link href="/" className="text-xl md:text-2xl font-light tracking-wide hover:text-gray-400 transition-colors">Home</Link>
               <Link href="/studio" className="text-xl md:text-2xl font-light tracking-wide hover:text-gray-400 transition-colors">Studio</Link>
-              <Link href="/projects" className="text-xl md:text-2xl font-light tracking-wide hover:text-gray-400 transition-colors">Projects</Link>
-              <Link href="/blog" className="text-xl md:text-2xl font-light tracking-wide hover:text-gray-400 transition-colors">Blog</Link>
+              <Link href="/product" className="text-xl md:text-2xl font-light tracking-wide hover:text-gray-400 transition-colors">Projects</Link>
+              <Link href="/blogs" className="text-xl md:text-2xl font-light tracking-wide hover:text-gray-400 transition-colors">Blog</Link>
             </div>
 
             {/* Social Media Column */}

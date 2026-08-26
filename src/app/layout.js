@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -18,11 +19,22 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+<html lang="en">
+      <body className="bg-[#050505] text-white antialiased selection:bg-[#ff2a00] selection:text-white">
+        
+        {/* Navbar stays fixed at the top of every page */}
+        <Navbar />
+
+        {/* This <main> tag will inject whatever page the user is currently on 
+            (e.g., the Blog page, Contact page, or Home page) */}
+        <main className="min-h-screen">
+          {children}
+        </main>
+
+        {/* Footer stays at the bottom of every page */}
+        <Footer />
+
+      </body>
     </html>
   );
 }
