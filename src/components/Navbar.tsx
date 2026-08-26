@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import GetStartedButton from './GetStartedButton';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -106,10 +107,7 @@ export default function Navbar() {
         </div>
 
         {/* CTA */}
-        <button className="bg-white text-black px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-          Get Started
-        </button>
-        
+        <GetStartedButton variant="secondary" />
       </div>
     </nav>
   );

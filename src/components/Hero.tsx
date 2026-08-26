@@ -1,5 +1,6 @@
 import React from 'react';
 import { Globe, ArrowRight } from 'lucide-react';
+import GetStartedButton from './GetStartedButton';
 
 export default function Hero() {
   return (
@@ -45,12 +46,13 @@ export default function Hero() {
           </p>
 
           <div className="flex items-center gap-6 mb-20">
-            <button className="flex items-center gap-4 bg-[#ff2a00] hover:bg-[#ff4500] text-white px-8 py-3.5 rounded-full font-medium transition-colors">
-              Get started
+         
+            <>
+            <GetStartedButton variant="primary" />
               <div className="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center">
                 <ArrowRight className="w-4 h-4" />
               </div>
-            </button>
+            </>
             
             <div className="flex items-center gap-3">
               <div className="flex -space-x-3">
