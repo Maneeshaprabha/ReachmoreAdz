@@ -1,20 +1,35 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
+import StartScalingButton from '@/components/StartScalingButton'; // <-- Import the button
 
 export default function About() {
   const brandOrange = "#ff5f1f";
   
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+    visible: { 
+      
+      opacity: 1, 
+      transition: { 
+        staggerChildren: 0.1 
+      } 
+    },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 20 } },
-  };
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+   type: "spring" as const,
+        stiffness: 80, 
+        damping: 20 
+      } 
+    },
+  }; // <-- Fixed double semicolon here
 
   return (
     <section className="relative w-full bg-[#0a0402] text-white pt-24 pb-20 px-6 md:px-12 flex flex-col items-center overflow-hidden font-sans selection:bg-[#ff2a00] selection:text-white">
@@ -93,7 +108,7 @@ export default function About() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-200px" }}
-        className="w-full max-w-5xl mx-auto z-10 relative h-[1000px] flex flex-col" // Increased height to 1000px
+        className="w-full max-w-5xl mx-auto z-10 relative h-[1000px] flex flex-col" 
       >
         {/* Animated SVG Path */}
         <svg viewBox="0 0 1000 1000" fill="none" className="absolute inset-0 w-full h-full z-0 opacity-60 pointer-events-none preserve-3d" preserveAspectRatio="none">
@@ -102,7 +117,6 @@ export default function About() {
             stroke={brandOrange}
             strokeWidth="3" 
             strokeLinecap="round"
-            // The magic: animates from 0% drawn to 100% drawn
             initial={{ pathLength: 0, opacity: 0 }}
             whileInView={{ pathLength: 1, opacity: 1 }}
             viewport={{ once: true, margin: "-20%" }}
@@ -152,6 +166,24 @@ export default function About() {
           </p>
         </motion.div>
       </motion.div>
+
+      {/* =========================================
+          FINAL CTA SECTION WITH NEW BUTTON
+          ========================================= */}
+      <motion.div 
+        variants={itemVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="w-full flex flex-col items-center justify-center text-center mt-32 z-20"
+      >
+        <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
+          Ready to engineer your growth?
+        </h3>
+        {/* Here is where we drop the button in! */}
+        <StartScalingButton />
+      </motion.div>
+
     </section>
   );
 }

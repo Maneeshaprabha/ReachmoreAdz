@@ -18,7 +18,7 @@ export default function ProductPage() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 20 } },
+    visible: { opacity: 1, y: 0, transition: { type: "spring" as const,  stiffness: 80, damping: 20 } },
   };
 
   return (
