@@ -50,7 +50,7 @@ export default function ServicesSection() {
       <div className="text-center mb-16 z-20">
         <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tighter uppercase leading-[1.1] text-gray-200">
           Strategy, Production, Growth <br />
-          <span className="text-gray-400">—We've got you covered.</span>
+          <span className="text-gray-400">— We've got you covered.</span>
         </h2>
       </div>
 

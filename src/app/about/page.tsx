@@ -29,8 +29,7 @@ export default function About() {
         damping: 20 
       } 
     },
-  }; // <-- Fixed double semicolon here
-
+  };
   return (
     <section className="relative w-full bg-[#0a0402] text-white pt-24 pb-20 px-6 md:px-12 flex flex-col items-center overflow-hidden font-sans selection:bg-[#ff2a00] selection:text-white">
       
