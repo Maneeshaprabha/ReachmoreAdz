@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import GetStartedButton from './GetStartedButton';
+import StartScalingButton from './StartScalingButton';
 
 
 // --- Data for the Interactive Stats ---
@@ -77,13 +79,8 @@ export default function AboutUs() {
           
           {/* Upgraded CTA Row */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 w-full">
-            <button className="group relative flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full font-bold transition-all hover:bg-gray-100 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,95,31,0.3)]">
-              Start Scaling
-              <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center transition-transform group-hover:-rotate-45">
-                &rarr;
-              </div>
-            </button>
-            
+          
+            <StartScalingButton/>
             {/* Frosted Glass Avatar Group */}
       
           </div>
