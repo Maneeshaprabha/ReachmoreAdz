@@ -110,7 +110,7 @@ export default function About() {
 
 
       {/* =========================================
-          PROCESS FLOW (Responsive handling)
+          PROCESS FLOMMW (Responsive handling)
           ========================================= */}
       <motion.div 
         variants={containerVariants}
