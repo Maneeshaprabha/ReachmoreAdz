@@ -33,7 +33,6 @@ export default function MethodologyHero() {
           </span>
           
           {/* Massive Bold Headline */}
-          {/* Scaled carefully from mobile (text-[2rem]) up to desktop (text-6xl) */}
           <h2 className="text-[2rem] sm:text-4xl md:text-5xl xl:text-6xl font-bold uppercase leading-[1.05] tracking-tight text-white mb-8 sm:mb-12 lg:mb-32 max-w-2xl">
             Data is the aesthetic of clarity and freedom. We create systems that become an extension of your brand, not just a metric.
           </h2>
@@ -44,7 +43,7 @@ export default function MethodologyHero() {
           </p>
         </motion.div>
 
-        {/* Right Column: The Silhouette Image */}
+        {/* Right Column: The MacBook Image */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -52,13 +51,17 @@ export default function MethodologyHero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full lg:w-[45%] flex items-center lg:items-end justify-center lg:justify-end relative z-20 mb-12 lg:mb-0 mt-8 lg:mt-0"
         >
-          {/* Image Container: Uses aspect-square on mobile, 4/3 on tablet, 4/5 on desktop */}
+          {/* Image Container */}
           <div className="w-full sm:w-[80%] lg:w-full max-w-lg aspect-square sm:aspect-[4/3] lg:aspect-[4/5] bg-[#0a0402] relative overflow-hidden shadow-2xl rounded-sm">
-            <img 
-              src="https://images.unsplash.com/photo-1614850715649-1d0106293cb1?q=80&w=1500&auto=format&fit=crop" 
-              alt="Brand Silhouette" 
-              className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-90 hover:scale-105 transition-transform duration-700"
-            />
+            
+            {/* OYAGE IMAGE LINK EKA METHANATA PASTE KARANNA */}
+      <img
+  src="https://images.unsplash.com/photo-1571677246347-5040036b95cc?auto=format&fit=crop&fm=jpg&q=80&w=1500"
+  alt="MacBook Pro Data Aesthetic"
+  className="absolute inset-0 w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+/>
+            {/* Note: I kept mix-blend-screen, but if the MacBook looks too transparent, you can change 'mix-blend-screen' to 'mix-blend-luminosity' or remove it completely! */}
+
           </div>
         </motion.div>
       </div>
@@ -71,10 +74,7 @@ export default function MethodologyHero() {
         className="w-full relative z-0 flex items-center justify-center pt-8 pb-12 sm:pt-6 sm:pb-16 md:pt-4 md:pb-20 overflow-hidden"
         style={{ backgroundColor: brandBlack }}
       >
-        {/* The font size is set using 'vw' (viewport width) so it perfectly 
-          scales and stretches from edge to edge on ANY screen size. 
-          Changed to 18vw so it has a tiny bit of breathing room on mobile edges.
-        */}
+        
         <motion.h1 
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
