@@ -8,9 +8,10 @@ interface StartScalingButtonProps {
   className?: string;
 }
 
+
 export default function StartScalingButton({ 
   text = "Start Scaling",
-  phoneNumber = "1234567890", // Replace with your actual WhatsApp number
+  phoneNumber = "+94761186751", // Replace with your actual WhatsApp number
   message = "Hi%20ReachMoreAdz,%20I'm%20ready%20to%20start%20scaling%20my%20campaigns!",
   className = ""
 }: StartScalingButtonProps) {

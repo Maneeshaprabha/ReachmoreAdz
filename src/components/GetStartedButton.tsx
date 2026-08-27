@@ -20,7 +20,7 @@ interface ButtonProps {
 export default function GetStartedButton({ 
   variant = 'primary', 
   // Default WhatsApp link (Replace with your actual number and message)
-  href = "https://wa.me/1234567890?text=Hi%20ReachMoreAdz,%20I'm%20ready%20to%20scale%20my%20brand!", 
+  href = "https://wa.me/+9476118751?text=Hi%20ReachMoreAdz,%20I'm%20ready%20to%20scale%20my%20brand!", 
   className = "",
   children = "Get Started"
 }: ButtonProps) {

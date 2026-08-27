@@ -1,11 +1,20 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 import StartScalingButton from '@/components/StartScalingButton'; // <-- Import the button
 
 export default function About() {
   const brandOrange = "#ff5f1f";
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Safely detect if we are on a mobile device to handle the SVG vs Stacked timeline
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile(); // Check on mount
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -13,7 +22,7 @@ export default function About() {
       
       opacity: 1, 
       transition: { 
-        staggerChildren: 0.1 
+        staggerChildren: 0.1
       } 
     },
   };
@@ -24,14 +33,14 @@ export default function About() {
       opacity: 1, 
       y: 0, 
       transition: { 
-   type: "spring" as const,
+        type: "spring" as const,
         stiffness: 80, 
         damping: 20 
       } 
     },
   };
   return (
-    <section className="relative w-full bg-[#0a0402] text-white pt-24 pb-20 px-6 md:px-12 flex flex-col items-center overflow-hidden font-sans selection:bg-[#ff2a00] selection:text-white">
+    <section className="relative w-full bg-[#0a0402] text-white pt-24 md:pt-32 pb-16 md:pb-20 px-4 sm:px-6 md:px-12 flex flex-col items-center overflow-hidden font-sans selection:bg-[#ff2a00] selection:text-white">
       
       {/* =========================================
           TOP SECTION: Overlapping images
@@ -40,12 +49,13 @@ export default function About() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="w-full max-w-[1600px] flex flex-col relative mb-12"
+        viewport={{ once: true, margin: "-50px" }}
+        className="w-full max-w-[1600px] flex flex-col relative mb-12 md:mb-20"
       >
-        <div className="flex justify-center items-center relative h-[400px] md:h-[500px] pointer-events-none mb-12">
+        <div className="flex justify-center items-center relative h-[250px] sm:h-[300px] md:h-[500px] pointer-events-none mb-8 md:mb-12">
           
-          <div className="absolute inset-x-0 mx-auto w-[60%] h-full z-10 rounded-2xl overflow-hidden shadow-2xl">
+          {/* Main Central Image */}
+          <div className="absolute inset-x-0 mx-auto w-[80%] md:w-[60%] h-full z-10 rounded-2xl overflow-hidden shadow-2xl">
             <div className="absolute inset-0 bg-[#ff5f1f]/60 mix-blend-color z-10 pointer-events-none" style={{ maskImage: 'radial-gradient(circle, black 40%, transparent 80%)', WebkitMaskImage: 'radial-gradient(circle, black 40%, transparent 80%)' }} />
             <img 
               src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=2000&auto=format&fit=crop" 
@@ -55,12 +65,12 @@ export default function About() {
             />
           </div>
 
-          {/* FLANKING IMAGES */}
-          <div className="absolute top-0 left-0 w-32 md:w-48 h-32 md:h-48 z-0 rounded-lg overflow-hidden grayscale">
+          {/* FLANKING IMAGES (Hidden on ultra-small screens, scaled on others) */}
+          <div className="hidden sm:block absolute top-0 left-0 sm:w-24 md:w-48 sm:h-24 md:h-48 z-0 rounded-lg overflow-hidden grayscale">
              <div className="absolute inset-0 bg-[#ff5f1f]/40 mix-blend-color z-10 pointer-events-none" />
              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop" alt="Portrait" className="absolute inset-0 w-full h-full object-cover"/>
           </div>
-          <div className="absolute top-0 right-0 w-32 md:w-48 h-32 md:h-48 z-0 rounded-lg overflow-hidden grayscale">
+          <div className="hidden sm:block absolute top-0 right-0 sm:w-24 md:w-48 sm:h-24 md:h-48 z-0 rounded-lg overflow-hidden grayscale">
              <div className="absolute inset-0 bg-[#ff5f1f]/40 mix-blend-color z-10 pointer-events-none" />
              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="Team" className="absolute inset-0 w-full h-full object-cover"/>
           </div>
@@ -68,7 +78,7 @@ export default function About() {
 
         <motion.h1 
           variants={itemVariants}
-          className="text-[14vw] md:text-[10rem] lg:text-[12rem] leading-[0.8] font-bold tracking-tighter uppercase text-center w-full select-none"
+          className="text-[18vw] md:text-[10rem] lg:text-[12rem] leading-[0.8] font-bold tracking-tighter uppercase text-center w-full select-none"
         >
           about us
         </motion.h1>
@@ -82,88 +92,146 @@ export default function About() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="max-w-7xl mx-auto w-full text-center mb-32 z-10 relative flex flex-col items-center"
+        viewport={{ once: true, margin: "-50px" }}
+        className="max-w-7xl mx-auto w-full text-center mb-20 md:mb-32 z-10 relative flex flex-col items-center"
       >
-        <span className="text-gray-400 font-medium text-sm tracking-wider mb-8 block">
+        <span className="text-gray-400 font-medium text-xs md:text-sm tracking-wider mb-6 md:mb-8 block px-4">
           Based in London, operating worldwide
         </span>
         
-        <h2 className="text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] font-bold uppercase leading-[0.9] tracking-tight mb-12 text-[#ff5f1f]">
+        <h2 className="text-3xl sm:text-4xl md:text-[5rem] lg:text-[6.5rem] font-bold uppercase leading-[1.1] md:leading-[0.9] tracking-tight mb-8 md:mb-12 text-[#ff5f1f] px-4">
           we are a creative collective of event producers, marketing specialists, art directors, designers, and strategic analysts.
         </h2>
         
-        <p className="text-gray-400 max-w-2xl text-base leading-relaxed mb-12">
+        <p className="text-gray-400 max-w-2xl text-sm md:text-base leading-relaxed mb-8 md:mb-12 px-4">
           Together, we create bespoke solutions for each brand, embracing high-impact creativity to craft memorable, innovative experiences. Our diverse expertise allows us to approach each project with fresh eyes and deliver exceptional results. People don't just attend events—they talk about them.
         </p>
       </motion.div>
 
 
       {/* =========================================
-          ANIMATED PROCESS FLOW 
+          PROCESS FLOW (Responsive handling)
           ========================================= */}
       <motion.div 
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-200px" }}
-        className="w-full max-w-5xl mx-auto z-10 relative h-[1000px] flex flex-col" 
+        viewport={{ once: true, margin: "-100px" }}
+        className="w-full max-w-5xl mx-auto z-10 relative flex flex-col" 
       >
-        {/* Animated SVG Path */}
-        <svg viewBox="0 0 1000 1000" fill="none" className="absolute inset-0 w-full h-full z-0 opacity-60 pointer-events-none preserve-3d" preserveAspectRatio="none">
-          <motion.path 
-            d="M500,0 C300,200 800,400 500,600 S200,800 500,1000" 
-            stroke={brandOrange}
-            strokeWidth="3" 
-            strokeLinecap="round"
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 1 }}
-            viewport={{ once: true, margin: "-20%" }}
-            transition={{ duration: 2.5, ease: "easeInOut" }}
-          />
-        </svg>
+        
+        {/* DESKTOP VIEW: SVG Winding Path (Only shows on md screens and up) */}
+        {!isMobile && (
+          <div className="relative h-[1000px] w-full hidden md:block">
+            {/* Animated SVG Path */}
+            <svg viewBox="0 0 1000 1000" fill="none" className="absolute inset-0 w-full h-full z-0 opacity-60 pointer-events-none preserve-3d" preserveAspectRatio="none">
+              <motion.path 
+                d="M500,0 C300,200 800,400 500,600 S200,800 500,1000" 
+                stroke={brandOrange}
+                strokeWidth="3" 
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true, margin: "-20%" }}
+                transition={{ duration: 2.5, ease: "easeInOut" }}
+              />
+            </svg>
 
-        {/* point 01 */}
-        <motion.div variants={itemVariants} className="absolute top-[10%] left-[10%] text-center p-4">
-          <span className="text-5xl font-bold text-[#ff5f1f] mb-3 block">01</span>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">analysis</span>
-          <p className="text-gray-400 text-[10px] max-w-[120px] leading-relaxed mt-1">
-             We analyse your brand to identify the core message.
-          </p>
-        </motion.div>
+            <motion.div variants={itemVariants} className="absolute top-[10%] left-[10%] text-center p-4">
+              <span className="text-5xl font-bold text-[#ff5f1f] mb-3 block">01</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">analysis</span>
+              <p className="text-gray-400 text-[10px] max-w-[120px] leading-relaxed mt-1">
+                 We analyse your brand to identify the core message.
+              </p>
+            </motion.div>
 
-        {/* process marker */}
-        <motion.div variants={itemVariants} className="absolute top-[30%] left-[50%] -translate-x-1/2 p-2 rounded-full flex gap-1 bg-[#0a0402]">
-           <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: brandOrange }}/>
-           <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">process</span>
-        </motion.div>
+            <motion.div variants={itemVariants} className="absolute top-[30%] left-[50%] -translate-x-1/2 p-2 rounded-full flex gap-1 bg-[#0a0402]">
+               <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: brandOrange }}/>
+               <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">process</span>
+            </motion.div>
 
-        {/* point 02 */}
-        <motion.div variants={itemVariants} className="absolute top-[45%] right-[15%] text-center p-4">
-          <span className="text-5xl font-bold text-[#ff5f1f] mb-3 block">02</span>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">concept</span>
-          <p className="text-gray-400 text-[10px] max-w-[120px] leading-relaxed mt-1">
-              We create unique concepts bringing ideas to life.
-          </p>
-        </motion.div>
+            <motion.div variants={itemVariants} className="absolute top-[45%] right-[15%] text-center p-4">
+              <span className="text-5xl font-bold text-[#ff5f1f] mb-3 block">02</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">concept</span>
+              <p className="text-gray-400 text-[10px] max-w-[120px] leading-relaxed mt-1">
+                  We create unique concepts bringing ideas to life.
+              </p>
+            </motion.div>
 
-        {/* point 03 */}
-        <motion.div variants={itemVariants} className="absolute top-[70%] left-[15%] text-center p-4">
-          <span className="text-5xl font-bold text-[#ff5f1f] mb-3 block">03</span>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">visuals</span>
-          <p className="text-gray-400 text-[10px] max-w-[120px] leading-relaxed mt-1">
-             We provide 3D visualisations to convey the key message.
-          </p>
-        </motion.div>
+            <motion.div variants={itemVariants} className="absolute top-[70%] left-[15%] text-center p-4">
+              <span className="text-5xl font-bold text-[#ff5f1f] mb-3 block">03</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">visuals</span>
+              <p className="text-gray-400 text-[10px] max-w-[120px] leading-relaxed mt-1">
+                 We provide 3D visualisations to convey the key message.
+              </p>
+            </motion.div>
 
-        {/* point 04 */}
-        <motion.div variants={itemVariants} className="absolute bottom-[5%] right-[20%] text-center p-4">
-          <span className="text-5xl font-bold text-[#ff5f1f] mb-3 block">04</span>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">budgeting</span>
-          <p className="text-gray-400 text-[10px] max-w-[120px] leading-relaxed mt-1">
-              We offer transparent pricing with no hidden costs.
-          </p>
-        </motion.div>
+            <motion.div variants={itemVariants} className="absolute bottom-[5%] right-[20%] text-center p-4">
+              <span className="text-5xl font-bold text-[#ff5f1f] mb-3 block">04</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">budgeting</span>
+              <p className="text-gray-400 text-[10px] max-w-[120px] leading-relaxed mt-1">
+                  We offer transparent pricing with no hidden costs.
+              </p>
+            </motion.div>
+          </div>
+        )}
+
+        {/* MOBILE VIEW: Vertical Timeline Stack (Only shows on mobile) */}
+        {isMobile && (
+          <div className="relative flex flex-col gap-12 py-12 md:hidden">
+            {/* Center Line connecting the dots */}
+            <div className="absolute left-8 top-12 bottom-12 w-0.5 bg-gradient-to-b from-[#ff5f1f]/80 to-transparent" />
+            
+            {/* Step 1 */}
+            <motion.div variants={itemVariants} className="relative z-10 flex items-start gap-6 pl-4">
+              <div className="w-8 h-8 rounded-full bg-[#0a0402] border-[3px] border-[#ff5f1f] shrink-0" />
+              <div>
+                <span className="text-3xl font-bold text-[#ff5f1f] mb-1 block leading-none">01</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">analysis</span>
+                <p className="text-gray-400 text-xs leading-relaxed mt-2 max-w-[200px]">
+                   We analyse your brand to identify the core message.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Step 2 */}
+            <motion.div variants={itemVariants} className="relative z-10 flex items-start gap-6 pl-4">
+              <div className="w-8 h-8 rounded-full bg-[#0a0402] border-[3px] border-[#ff5f1f] shrink-0" />
+              <div>
+                <span className="text-3xl font-bold text-[#ff5f1f] mb-1 block leading-none">02</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">concept</span>
+                <p className="text-gray-400 text-xs leading-relaxed mt-2 max-w-[200px]">
+                   We create unique concepts bringing ideas to life.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Step 3 */}
+            <motion.div variants={itemVariants} className="relative z-10 flex items-start gap-6 pl-4">
+              <div className="w-8 h-8 rounded-full bg-[#0a0402] border-[3px] border-[#ff5f1f] shrink-0" />
+              <div>
+                <span className="text-3xl font-bold text-[#ff5f1f] mb-1 block leading-none">03</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">visuals</span>
+                <p className="text-gray-400 text-xs leading-relaxed mt-2 max-w-[200px]">
+                   We provide 3D visualisations to convey the key message.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Step 4 */}
+            <motion.div variants={itemVariants} className="relative z-10 flex items-start gap-6 pl-4">
+              <div className="w-8 h-8 rounded-full bg-[#0a0402] border-[3px] border-[#ff5f1f] shrink-0" />
+              <div>
+                <span className="text-3xl font-bold text-[#ff5f1f] mb-1 block leading-none">04</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#ff5f1f]">budgeting</span>
+                <p className="text-gray-400 text-xs leading-relaxed mt-2 max-w-[200px]">
+                   We offer transparent pricing with no hidden costs.
+                </p>
+              </div>
+            </motion.div>
+
+          </div>
+        )}
       </motion.div>
 
       {/* =========================================
@@ -174,12 +242,11 @@ export default function About() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="w-full flex flex-col items-center justify-center text-center mt-32 z-20"
+        className="w-full flex flex-col items-center justify-center text-center mt-16 md:mt-32 z-20 px-4"
       >
-        <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
+        <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-6 md:mb-8">
           Ready to engineer your growth?
         </h3>
-        {/* Here is where we drop the button in! */}
         <StartScalingButton />
       </motion.div>
 
