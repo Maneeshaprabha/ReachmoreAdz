@@ -38,7 +38,6 @@ export default function Footer() {
           <motion.div variants={itemVariants} className="flex flex-col gap-8 md:gap-10 w-full lg:w-auto">
             
             {/* The Split Image Container */}
-            {/* Scaled down slightly on mobile to prevent overflow */}
             <div className="border-[2px] md:border-[3px] border-white rounded-[2rem] md:rounded-[2.5rem] p-1.5 md:p-2 flex gap-1.5 md:gap-2 w-fit bg-black">
               {/* Left Image (Red Tint) */}
               <div className="relative w-24 sm:w-32 md:w-40 h-24 sm:h-32 md:h-40 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden">
@@ -60,7 +59,6 @@ export default function Footer() {
             </div>
 
             {/* Massive Email Link with Underline */}
-            {/* Uses text-[8vw] on tiny screens to ensure it doesn't wrap awkwardly, handing off to fixed sizes on sm+ */}
             <div>
               <a 
                 href="mailto:info@ReachMoreAdz.com" 
@@ -100,12 +98,31 @@ export default function Footer() {
             ========================================= */}
         <motion.div variants={itemVariants} className="w-full mt-16 md:mt-20 mb-6 md:mb-8">
           <hr className="border-white/10 mb-6 md:mb-8" />
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[10px] md:text-xs font-medium text-gray-400">
-            <p>© 2026 ReachMoreAdz Studio. All Rights Reserved</p>
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 text-[10px] md:text-xs font-medium text-gray-400 w-full">
+            
+            {/* Copyright & Netxium Credits */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+              <p>© 2026 ReachMoreAdz Studio. All Rights Reserved.</p>
+              <span className="hidden sm:inline text-gray-600">|</span>
+              <p>
+                Powered by{' '}
+                <a 
+                  href="https://netxium.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-white hover:text-[#ff5f1f] transition-colors font-bold tracking-widest"
+                >
+                  NETXIUM
+                </a>
+              </p>
+            </div>
+
+            {/* Legal Links */}
             <div className="flex gap-6 md:gap-8">
               <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
               <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             </div>
+
           </div>
         </motion.div>
 
@@ -121,8 +138,6 @@ export default function Footer() {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="w-full flex justify-center items-end mt-2 md:mt-4 overflow-hidden pointer-events-none"
       >
-        {/* Using viewport width (vw) so the text scales perfectly to the edges on any device */}
-        {/* Added whitespace-nowrap to prevent the text from breaking into two lines on ultra-narrow phones */}
         <h1 className="text-[10.5vw] leading-[0.72] font-light tracking-tighter text-white m-0 p-0 select-none whitespace-nowrap">
           REACHMORE ADZ
         </h1>
