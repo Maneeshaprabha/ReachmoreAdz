@@ -26,12 +26,7 @@ export default function Hero() {
         {/* LEFT COLUMN: Typography & Main Stats */}
         <div className="lg:col-span-6 flex flex-col relative z-20 w-full">
           
-          <div className="flex items-center gap-3 mb-6 md:mb-8">
-            <Globe className="w-4 h-4 md:w-5 md:h-5 text-gray-400" />
-            <p className="text-[10px] md:text-xs text-gray-400 max-w-[150px] leading-tight">
-              Hub support peoples from all over the world
-            </p>
-          </div>
+         
 
           <h1 className="text-[3.5rem] sm:text-[4.5rem] lg:text-[6.5rem] leading-[0.9] font-medium tracking-tight mb-6 md:mb-8">
             Technology <br />
